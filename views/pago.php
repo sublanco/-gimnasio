@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Pago de membresía</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 <body>
 
-<h2>Pago de cuota / membresía</h2>
+<div class="container">
+    <h2>Pago de cuota / membresía</h2>
 
-<form action="../controllers/pagoController.php" method="POST">
-    <label>ID Cliente:</label><br>
-    <input type="number" name="cliente_id" required><br><br>
+    <form action="../controllers/pagoController.php" method="POST">
+        <label>ID Cliente</label>
+        <input type="number" name="cliente_id" required>
 
-    <label>Monto:</label><br>
-    <input type="number" name="monto" required><br><br>
+        <label>Monto</label>
+        <input type="number" name="monto" required>
 
-    <label>Método de pago:</label><br>
-    <select name="metodo" required>
-        <option value="">Seleccione</option>
-        <option value="efectivo">Efectivo</option>
-        <option value="tarjeta">Tarjeta</option>
-        <option value="transferencia">Transferencia</option>
-    </select><br><br>
+        <label>Método de pago</label>
+        <select name="metodo" required>
+            <option value="">Seleccione</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencia">Transferencia</option>
+        </select>
 
-    <button type="submit">Registrar pago</button>
-</form>
+        <button type="submit">Registrar pago</button>
+    </form>
+</div>
 
 </body>
 </html>

@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscripción de cliente</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 <body>
 
-<h2>Inscripción de cliente</h2>
+<div class="container">
+    <h2>Inscripción de cliente</h2>
 
-<form action="../controllers/inscripcionController.php" method="POST">
-    <label>Nombre:</label><br>
-    <input type="text" name="nombre" required><br><br>
+    <form action="../controllers/inscripcionController.php" method="POST">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required>
 
-    <label>DNI:</label><br>
-    <input type="text" name="dni" required><br><br>
+        <label>DNI</label>
+        <input type="text" name="dni" required>
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-    <button type="submit">Inscribir cliente</button>
-</form>
+        <button type="submit">Inscribir cliente</button>
+    </form>
+</div>
 
 </body>
 </html>
+

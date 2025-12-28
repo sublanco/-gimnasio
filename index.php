@@ -1,43 +1,27 @@
 <!DOCTYPE html>
-<?php
-session_start();
-
-// Reinicia contador si viene del logout
-if (!isset($_SESSION['intentos'])) {
-    $_SESSION['intentos'] = 0;
-}
-?>
-
-<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <link rel="stylesheet" href="estilos.css">
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestión de Gimnasio</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 
 <body>
 
-<div class="contenedor">
-    <h2>Login</h2>
+<header>
+    <h1>Sistema de Gestión de Gimnasio</h1>
+    <nav>
+        <a href="views/inscripcion.php">Inscripción</a>
+        <a href="views/reserva.php">Reserva de clase</a>
+        <a href="views/pago.php">Pago</a>
+    </nav>
+</header>
 
-    <?php
-    if (isset($_GET['error'])) {
-        echo "<p class='error'>Usuario o contraseña incorrectos</p>";
-    }
-
-    if ($_SESSION['intentos'] >= 3) {
-        echo "<p class='error'>Demasiados intentos, espere 30 segundos...</p>";
-        exit();
-    }
-    ?>
-
-    <form action="procesar.php" method="POST">
-        <input type="text" name="usuario" placeholder="Usuario" required><br>
-        <input type="password" name="password" placeholder="Contraseña" required><br>
-        <button type="submit">Ingresar</button>
-    </form>
+<div class="container">
+    <h2>Bienvenido</h2>
+    <p>Proyecto de análisis funcional y desarrollo backend en PHP.</p>
+    <p>Seleccione una opción del menú para continuar.</p>
 </div>
 
-</body>
-</html>
-
+    </body>
+ </html>
