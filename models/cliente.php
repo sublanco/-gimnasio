@@ -7,8 +7,17 @@ class Cliente {
         $this->pdo = $pdo;
     }
 
-    public function crear(){
-        
+    public function crear($nombre, $dni, $email) {
+        $sql = "INSERT INTO clientes (nombre, dni, email, activo)
+                VALUES (:nombre, :dni, :email, 1)";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        return $stmt->execute([
+            ':nombre' => $nombre,
+            ':dni'    => $dni,
+            ':email'  => $email
+        ]);
     }
 
     public function obtenerPorId($id) {
@@ -29,3 +38,4 @@ class Cliente {
         return $cliente && $cliente['activo'];
     }
 }
+

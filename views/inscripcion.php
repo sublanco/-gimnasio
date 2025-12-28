@@ -10,7 +10,7 @@
 <div class="container">
     <h2>Inscripción de cliente</h2>
 
-    <form action="../controllers/inscripcionController.php" method="POST">
+   <form action="/gimnasio/controllers/inscripcionController.php" method="POST">
         <label>Nombre</label>
         <input type="text" name="nombre" required>
 
