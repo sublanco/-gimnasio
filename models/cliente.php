@@ -7,6 +7,10 @@ class Cliente {
         $this->pdo = $pdo;
     }
 
+    public function crear(){
+        
+    }
+
     public function obtenerPorId($id) {
         $stmt = $this->pdo->prepare(
             "SELECT * FROM clientes WHERE id = ?"
