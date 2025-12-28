@@ -37,5 +37,17 @@ class Cliente {
 
         return $cliente && $cliente['activo'];
     }
+
+    public function listarTodos() {
+    $sql = "SELECT * FROM clientes ORDER BY id DESC";
+    $stmt = $this->pdo->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function getUltimoId() {
+    return $this->pdo->lastInsertId();
+}
+
+
 }
 

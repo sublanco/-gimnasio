@@ -20,7 +20,10 @@ $clienteModel = new Cliente($pdo);
 
 // Crear cliente
 if ($clienteModel->crear($nombre, $dni, $email)) {
-    echo "Cliente inscripto correctamente";
+   // echo "Cliente inscripto correctamente";
+   //header("Location: ../views/pago.php?cliente_id=" . $clienteModel->getUltimoId());
+   header("Location: clienteController.php");
+   exit;
 } else {
     echo "Error al inscribir el cliente";
 }

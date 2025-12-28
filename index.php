@@ -10,11 +10,7 @@
 
 <header>
     <h1>Sistema de Gestión de Gimnasio</h1>
-    <nav>
-        <a href="views/inscripcion.php">Inscripción</a>
-        <a href="views/reserva.php">Reserva de clase</a>
-        <a href="views/pago.php">Pago</a>
-    </nav>
+    <?php include "views/menu.php"; ?>
 </header>
 
 <div class="container">

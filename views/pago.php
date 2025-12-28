@@ -12,7 +12,9 @@
 
     <form action="../controllers/pagoController.php" method="POST">
         <label>ID Cliente</label>
-        <input type="number" name="cliente_id" required>
+        <input type="hidden" name="cliente_id" value="<?= $_GET['cliente_id'] ?? '' ?>">
+
+      
 
         <label>Monto</label>
         <input type="number" name="monto" required>
