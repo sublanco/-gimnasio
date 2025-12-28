@@ -19,6 +19,7 @@
         <th>DNI</th>
         <th>Email</th>
         <th>Estado</th>
+        <th>Acción</th>
     </tr>
 
     <?php foreach ($clientes as $c): ?>
@@ -28,9 +29,18 @@
         <td><?= $c['dni'] ?></td>
         <td><?= $c['email'] ?></td>
         <td><?= $c['activo'] ? 'Activo' : 'Inactivo' ?></td>
+        <td>
+            <?php if ($c['activo']): ?>
+                <a class="btn" href="../views/pago.php?cliente_id=<?= $c['id'] ?>">
+                    Pagar
+                </a>
+            <?php else: ?>
+                —
+            <?php endif; ?>
+        </td>
     </tr>
     <?php endforeach; ?>
-
+    
 </table>
 
 </body>

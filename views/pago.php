@@ -1,3 +1,8 @@
+<?php
+$cliente_id = $_GET['cliente_id'] ?? null;
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,10 +14,13 @@
 
 <div class="container">
     <h2>Pago de cuota / membresía</h2>
+    <?php if ($cliente_id): ?>
+    <p><strong>Cliente ID:</strong> <?= $cliente_id ?></p>
+<?php endif; ?>
 
     <form action="../controllers/pagoController.php" method="POST">
         <label>ID Cliente</label>
-        <input type="hidden" name="cliente_id" value="<?= $_GET['cliente_id'] ?? '' ?>">
+        <input type="hidden" name="cliente_id" value="<?= $cliente_id ?>">
 
       
 
