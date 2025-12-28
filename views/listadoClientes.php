@@ -2,17 +2,16 @@
 <html>
 <head>
     <title>Clientes inscriptos</title>
-    <link rel="stylesheet" href="../assets/estilos.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 <body>
 
+<div class="contenedor">
 <h2>Clientes inscriptos</h2>
 
-<nav>
-    <a href="../views/inscripcion.php">Inscripcion</a>
-</nav>
+<a href="../views/inscripcion.php" class='btn'>Inscripcion</a>
 
-<table>
+<table class="listado">
     <tr>
         <th>ID</th>
         <th>Nombre</th>
@@ -42,6 +41,7 @@
     <?php endforeach; ?>
     
 </table>
-
+            </div>
 </body>
 </html>
+
