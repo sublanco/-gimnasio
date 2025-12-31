@@ -11,6 +11,7 @@
 
 <a href="../views/inscripcion.php" class='btn'>Inscripcion</a>
 
+
 <table class="listado">
     <tr>
         <th>ID</th>
@@ -30,7 +31,7 @@
         <td><?= $c['activo'] ? 'Activo' : 'Inactivo' ?></td>
         <td>
             <?php if ($c['activo']): ?>
-                <a class="btn" href="../views/pago.php?cliente_id=<?= $c['id'] ?>">
+                <a class="btn" href="../controllers/pagoController.php?cliente_id=<?= $c['id'] ?>">
                     Pagar
                 </a>
             <?php else: ?>

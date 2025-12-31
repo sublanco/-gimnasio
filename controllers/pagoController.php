@@ -1,41 +1,41 @@
 <?php
 require_once "../config/db.php";
-require_once "../models/Cliente.php";
-require_once "../models/Membresia.php";
-require_once "../models/Pago.php";
+require_once '../models/Cliente.php';
+require_once '../models/Pago.php';
+require_once '../models/Membresia.php';
 
-// Instanciar modelos
-$clienteModel   = new Cliente($pdo);
+$clienteModel = new Cliente($pdo);
+$pagoModel = new Pago($pdo);
 $membresiaModel = new Membresia($pdo);
-$pagoModel      = new Pago($pdo);
+
 
 // Datos del formulario
-$clienteId = $_POST['cliente_id'];
-$monto     = $_POST['monto'];
-$metodo    = $_POST['metodo'];
+//$clienteId = $_GET['cliente_id'];
+//$monto     = $_GET['monto'];
+//$metodo    = $_GET['metodo'];
 
-// 1️⃣ Verificar que el cliente esté activo
-if (!$clienteModel->estaActivo($clienteId)) {
-    die("Error: el cliente no está activo");
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Mostrar formulario
+    if (!isset($_GET['cliente_id'])) {
+        die('Cliente no especificado');
+    }
+
+    $cliente = $clienteModel->obtenerPorId($_GET['cliente_id']);
+    require '../views/pago.php';
 }
 
-// 2️⃣ Verificar si la membresía está vencida
-if (!$membresiaModel->estaVencida($clienteId)) {
-    die("La membresía ya se encuentra vigente");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cliente_id = $_POST['cliente_id'];
+    $monto = $_POST['monto'];
+    $metodo = $_POST['metodo'];
+
+    $pagoOk = $pagoModel->registrar($cliente_id, $monto, $metodo);
+
+    if ($pagoOk) {
+        $membresiaModel->actualizarVigencia($cliente_id);
+        header('Location: ../controllers/clienteController.php?msg=pago_ok');
+    } else {
+        echo "Error al registrar el pago";
+    }
 }
-
-// 3️⃣ Registrar el pago
-if (!$pagoModel->registrar($clienteId, $monto, $metodo)) {
-    die("Error al registrar el pago");
-}
-
-// 4️⃣ Validar el pago
-if (!$pagoModel->validar()) {
-    die("El pago no pudo ser validado");
-}
-
-// 5️⃣ Actualizar la vigencia de la membresía
-$membresiaModel->actualizarVigencia($clienteId);
-
-// 6️⃣ Confirmación
-echo "Pago registrado y membresía actualizada correctamente";

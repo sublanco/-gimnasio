@@ -1,7 +1,8 @@
 <?php
 
+
 class Membresia {
-    private $pdo;
+private $pdo;
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
@@ -12,16 +13,22 @@ class Membresia {
             "SELECT vigente FROM membresias WHERE cliente_id = ?"
         );
         $stmt->execute([$clienteId]);
-        $membresia = $stmt->fetch(PDO::FETCH_ASSOC);
+        $Membresia = $stmt->fetch(PDO::FETCH_ASSOC);
+        $Membresia =$declaracion->buscar(PDO::FETCH_ASSOC);
 
-        return !$membresia || !$membresia['vigente'];
+
+        return!$Membresia|| !$Membresia['vigente'];
     }
 
-    public function actualizarVigencia($clienteId) {
+
+
+    public function actualizarVigencia($cliente_id) {
         $stmt = $this->pdo->prepare(
-            "UPDATE membresias SET vigente = 1
+            "UPDATE membresias
+             SET fecha_inicio = CURDATE(),
+                 fecha_fin = DATE_ADD(CURDATE(), INTERVAL 30 DAY)
              WHERE cliente_id = ?"
         );
-        return $stmt->execute([$clienteId]);
+        return $stmt->execute([$cliente_id]);
     }
 }
